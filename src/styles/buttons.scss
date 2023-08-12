@@ -1,0 +1,77 @@
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-3);
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-4);
+
+  &.signIn {
+    height: 38px;
+    width: 100%;
+    background: var(--color-primary);
+    color: #ffffff;
+
+    &.colorNegative {
+      background-color: var(--color-primary-negative);
+    }
+
+    &:hover {
+      background: var(--color-primary-focus);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: var(--color-primary-negative);
+    }
+
+    @media (min-width: 550px) {
+      height: 48px;
+    }
+  }
+
+  &.logout {
+    width: 55px;
+    height: 32px;
+    background: var(--background-color-3);
+
+    color: var(--font-color-1);
+    font-size: var(--font-size-3);
+    font-weight: var(--font-weight-2);
+    line-height: var(--line-height-4);
+
+    &:hover {
+      background: var(--color-grey-4);
+    }
+  }
+
+  &.transparent {
+    background: transparent;
+    padding: 0;
+  }
+
+  &.modalButton {
+    width: clamp(80px, 30vw, 140px);
+    height: 40px;
+    background: var(--color-primary-negative);
+    color: var(--font-color-2);
+
+    &:hover {
+      background: var(--color-primary);
+    }
+  }
+
+  &.closeModal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+  }
+}

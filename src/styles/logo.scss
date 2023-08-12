@@ -1,0 +1,27 @@
+.logoSize {
+  height: 100%;
+  width: 100%;
+  max-width: 101px;
+  max-height: 14px;
+  transition: 0.5s;
+
+  @media (min-width: 425px) {
+    max-width: 144px;
+    max-height: 20px;
+  }
+
+  &.reg {
+    max-width: 98px;
+    max-height: 17px;
+
+    @media (min-width: 550px) {
+      max-width: 122px;
+      max-height: 21px;
+    }
+  }
+
+  &.dash {
+    max-width: 106px;
+    max-height: 15px;
+  }
+}
