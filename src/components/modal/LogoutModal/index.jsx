@@ -1,8 +1,11 @@
 import { MdClose } from "react-icons/md";
 import styles from "./style.module.scss";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../../providers/UserContext";
 
-export const LogoutModal = ({ userLogout, setVisible }) => {
+export const LogoutModal = () => {
+  const { userLogout, setVisible } = useContext(UserContext);
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {

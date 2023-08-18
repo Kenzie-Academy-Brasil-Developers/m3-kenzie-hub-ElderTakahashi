@@ -1,10 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/Logo.svg";
 import { LogoutModal } from "../modal/LogoutModal";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
 
-export const Header = ({ userLogout, setVisible, isVisible }) => {
+export const Header = () => {
   const location = useLocation();
   const currentPath = location.pathname;
+  const { setVisible, isVisible, user } = useContext(UserContext);
 
   const renderButton = () => {
     if (currentPath === "/dashboard") {
@@ -16,7 +19,7 @@ export const Header = ({ userLogout, setVisible, isVisible }) => {
     } else if (currentPath !== "/") {
       return (
         <button className="transparent">
-          <Link to="/" className="link back">
+          <Link to={user ? "/dashboard" : "/"} className="link back">
             Voltar
           </Link>
         </button>
@@ -31,11 +34,7 @@ export const Header = ({ userLogout, setVisible, isVisible }) => {
       <div
         className={`container high ${
           currentPath !== "/" ? "spaceBetween" : ""
-        } ${
-          currentPath === "/dashboard" || currentPath === "/errorPage"
-            ? "wider"
-            : ""
-        }
+        } ${currentPath !== "/" && currentPath !== "/register" ? "wider" : ""}
         ${currentPath === "/register" ? "marginTop" : ""}
         `}
       >
@@ -48,9 +47,7 @@ export const Header = ({ userLogout, setVisible, isVisible }) => {
         {renderButton()}
       </div>
 
-      {isVisible ? (
-        <LogoutModal userLogout={userLogout} setVisible={setVisible} />
-      ) : null}
+      {isVisible ? <LogoutModal /> : null}
     </header>
   );
 };

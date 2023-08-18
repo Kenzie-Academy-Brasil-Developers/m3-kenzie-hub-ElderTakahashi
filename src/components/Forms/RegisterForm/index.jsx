@@ -1,13 +1,11 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Input } from "../Input";
 import { Select } from "../Select";
 import { InputPassword } from "../InputPassword";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerFormSchema } from "./registerFormSchema";
-import { kenzieHubApi } from "../../../services/api";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../providers/UserContext";
 
 export const RegisterForm = () => {
   const {
@@ -20,33 +18,10 @@ export const RegisterForm = () => {
   });
 
   const [loading, setLoading] = useState(false);
-
-  const navigate = useNavigate();
-
-  const userRegister = async (formData) => {
-    setLoading(true);
-    try {
-      await kenzieHubApi.post("/users", formData);
-      toast.success(
-        "Conta criada com sucesso, redirecionando para a página de login"
-      );
-      setTimeout(() => {
-        navigate("/");
-      }, 3000);
-    } catch (error) {
-      if (error.response?.data.message === "Email already exists") {
-        toast.error("Usuário já cadastrado");
-      } else {
-        toast.error("Ops! Algo deu errado");
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { userRegister } = useContext(UserContext);
 
   const submit = (formData) => {
-    userRegister(formData);
-    reset();
+    userRegister(formData, setLoading, reset);
   };
 
   return (
