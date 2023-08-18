@@ -45,9 +45,6 @@ export const UserProvider = ({ children }) => {
       setUser(data.user);
       reset();
       toast.success("Login realizado com sucesso");
-      // setTimeout(() => {
-      //   navigate("/dashboard");
-      // }, 500);
     } catch (error) {
       if (
         error.response?.data.message ===
