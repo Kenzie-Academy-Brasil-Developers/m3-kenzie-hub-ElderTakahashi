@@ -45,11 +45,11 @@ export const TechProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setTechList((prevList) =>
+      const newTechList = (prevList) =>
         prevList.map((tech) =>
           tech.id === id ? { ...tech, ...formData } : tech
-        )
-      );
+        );
+      setTechList(newTechList);
       toast.success("Tecnologia editada com sucesso");
       setCurrentTech(null);
       return data;
@@ -67,7 +67,9 @@ export const TechProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setTechList((prevList) => prevList.filter((tech) => tech.id !== id));
+      const newTechList = (techList) =>
+        techList.filter((tech) => tech.id !== id);
+      setTechList(newTechList);
       toast.success("Tecnologia excluida com sucesso");
       return data;
     } catch (error) {
