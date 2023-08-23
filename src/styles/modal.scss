@@ -1,0 +1,52 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+
+  .modal {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: clamp(296px, 55vw, 369px);
+    margin: 15px;
+    margin-bottom: 100px;
+
+    border-radius: var(--border-radius-1);
+    background-color: var(--background-color-3);
+    overflow: hidden;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: var(--background-color-1);
+      padding: 15px 20px;
+    }
+
+    & > form {
+      padding: 20px;
+      margin-bottom: 10px;
+    }
+
+    &.logout {
+      height: 200px;
+      justify-content: space-between;
+
+      & > h1 {
+        text-align: center;
+      }
+
+      & > div:last-child {
+        justify-content: space-around;
+        background: transparent;
+      }
+    }
+  }
+}

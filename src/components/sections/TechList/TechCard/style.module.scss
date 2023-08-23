@@ -1,0 +1,40 @@
+.cardBox {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 20px;
+  background: var(--color-grey-1);
+  border-radius: var(--border-radius-1);
+  gap: 10px;
+
+  &:hover {
+    background: var(--background-color-1);
+  }
+
+  @media (min-width: 550px) {
+    flex-direction: row;
+
+    & > h2 {
+      white-space: nowrap;
+    }
+  }
+
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @media (min-width: 550px) {
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+    }
+
+    & > div {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+}

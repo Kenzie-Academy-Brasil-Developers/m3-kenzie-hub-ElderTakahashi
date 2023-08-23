@@ -12,13 +12,18 @@ export const Header = () => {
   const renderButton = () => {
     if (currentPath === "/dashboard") {
       return (
-        <button className="logout" onClick={() => setVisible(true)}>
+        <button
+          className="logout"
+          title="Logout"
+          aria-label="logout"
+          onClick={() => setVisible(true)}
+        >
           Sair
         </button>
       );
     } else if (currentPath !== "/") {
       return (
-        <button className="transparent">
+        <button className="transparent" title="Voltar" aria-label="back">
           <Link to={user ? "/dashboard" : "/"} className="link back">
             Voltar
           </Link>

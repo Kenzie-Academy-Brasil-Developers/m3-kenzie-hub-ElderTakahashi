@@ -1,5 +1,4 @@
 import { MdClose } from "react-icons/md";
-import styles from "./style.module.scss";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../../providers/UserContext";
 
@@ -19,22 +18,28 @@ export const LogoutModal = () => {
   }, []);
 
   return (
-    <div className={styles.modalOverlay} role="dialog">
-      <div className={styles.modal}>
-        <button
-          className="closeModal"
-          aria-label="close"
-          title="Fechar"
-          onClick={() => setVisible(false)}
-        >
-          <MdClose size={21} color="gray" />
-        </button>
+    <div className="modalOverlay" role="dialog">
+      <div className="modal logout">
+        <div>
+          <h2 className="title two">Logout</h2>
+          <button
+            className="closeModal"
+            aria-label="close"
+            title="Fechar"
+            onClick={() => setVisible(false)}
+          >
+            <MdClose size={21} color="gray" />
+          </button>
+        </div>
         <h1 className="title one">Tem certeza que quer se desconectar?</h1>
         <div>
-          <button className="modalButton" onClick={userLogout}>
+          <button className="logoutModalButton" onClick={userLogout}>
             Sim
           </button>
-          <button className="modalButton" onClick={() => setVisible(false)}>
+          <button
+            className="logoutModalButton"
+            onClick={() => setVisible(false)}
+          >
             Não
           </button>
         </div>

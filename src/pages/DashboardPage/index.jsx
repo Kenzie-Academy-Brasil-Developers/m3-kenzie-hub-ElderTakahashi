@@ -1,4 +1,4 @@
-import { ContentSection } from "../../components/sections/ContentSection";
+import { TechList } from "../../components/sections/TechList";
 import { UserInfo } from "../../components/sections/UserInfo";
 import styles from "./style.module.scss";
 
@@ -9,7 +9,7 @@ export const DashboardPage = () => {
         <div className={styles.boxBorder}>
           <UserInfo />
         </div>
-        <ContentSection />
+        <TechList />
       </main>
     </>
   );

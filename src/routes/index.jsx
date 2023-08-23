@@ -5,6 +5,7 @@ import { DashboardPage } from "../pages/DashboardPage";
 import { ErrorPage } from "../pages/ErrorPage";
 import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
+import { TechProvider } from "../providers/TechContext";
 
 export const RoutesMain = () => {
   return (
@@ -15,7 +16,14 @@ export const RoutesMain = () => {
       </Route>
 
       <Route element={<PrivateRoutes />}>
-        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route
+          path="/dashboard"
+          element={
+            <TechProvider>
+              <DashboardPage />
+            </TechProvider>
+          }
+        />
       </Route>
 
       <Route path="*" element={<ErrorPage />} />

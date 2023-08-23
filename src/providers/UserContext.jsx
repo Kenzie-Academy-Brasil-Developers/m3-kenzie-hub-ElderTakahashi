@@ -7,6 +7,7 @@ export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [techList, setTechList] = useState();
   const [isVisible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -23,7 +24,9 @@ export const UserProvider = ({ children }) => {
             Authorization: `Bearer ${token}`,
           },
         });
+
         setUser(data);
+        setTechList(data.techs);
         navigate(pathname);
       } catch (error) {
         toast.error(error.message);
@@ -42,7 +45,9 @@ export const UserProvider = ({ children }) => {
       const { data } = await kenzieHubApi.post("/sessions", formData);
       localStorage.setItem("@TOKEN", JSON.stringify(data.token));
       localStorage.setItem("@USERID", JSON.stringify(data.user.id));
+
       setUser(data.user);
+      setTechList(data.user.techs);
       reset();
       toast.success("Login realizado com sucesso");
     } catch (error) {
@@ -93,6 +98,8 @@ export const UserProvider = ({ children }) => {
       value={{
         loading,
         user,
+        techList,
+        setTechList,
         userLogin,
         userRegister,
         userLogout,
