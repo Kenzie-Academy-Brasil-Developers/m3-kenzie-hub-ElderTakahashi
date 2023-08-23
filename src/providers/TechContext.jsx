@@ -45,8 +45,8 @@ export const TechProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      const newTechList = (prevList) =>
-        prevList.map((tech) =>
+      const newTechList = (techList) =>
+        techList.map((tech) =>
           tech.id === id ? { ...tech, ...formData } : tech
         );
       setTechList(newTechList);
