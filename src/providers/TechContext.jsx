@@ -10,7 +10,7 @@ export const TechProvider = ({ children }) => {
   const { techList, setTechList } = useContext(UserContext);
   const [currentTech, setCurrentTech] = useState(null);
 
-  const addTech = async (formData) => {
+  const addTech = async (formData, setLoading) => {
     try {
       const token = JSON.parse(localStorage.getItem("@TOKEN"));
 
@@ -33,6 +33,8 @@ export const TechProvider = ({ children }) => {
       } else {
         toast.error(error.response.data.message);
       }
+    } finally {
+      setLoading(false);
     }
   };
 

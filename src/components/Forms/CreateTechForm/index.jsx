@@ -1,6 +1,6 @@
 import { Input } from "../Input";
 import { Select } from "../Select";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext, useState } from "react";
 import { createTechFormSchema } from "./createTechFormSchema";
@@ -21,7 +21,7 @@ export const CreateTechForm = () => {
   const [loading, setLoading] = useState(false);
 
   const submit = (formData) => {
-    addTech(formData);
+    addTech(formData, setLoading);
     setLoading(true);
     reset();
   };
